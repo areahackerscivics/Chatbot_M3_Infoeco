@@ -25,7 +25,7 @@ except Exception as e:
 # urlMongoDB = "mongodb://valenciaApp:valenciaApp@ds127321.mlab.com:27321/datos_valencia"
 
 client = pymongo.MongoClient(urlMongoDB,port)
-db = client.prueba  #db = client.get_default_database() # Accedemos a la BD donde tenemos las colecciones
+db = client.usuarios  #db = client.get_default_database() # Accedemos a la BD donde tenemos las colecciones
 dbUsuarios = db.usuarios
 dbMensajes = db.mensajes
 
@@ -35,6 +35,12 @@ dbMensajes = db.mensajes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Funciónes
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def insertar_feedback(callback):
+  try:            
+    dbMensajes.find_and_modify(query = {"idUsuario":callback.message.chat.id},update = {"$set":{'respuesta_adecuada':callback.data}},sort = {"_id":-1})
+  except Exception as e:
+    logging.exception("- Error al insertar Usuario: ")
 
 def insertarNuevoUsuario(idUsario):
     query = {

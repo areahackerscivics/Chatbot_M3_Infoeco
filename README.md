@@ -28,11 +28,11 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 **Pasos**
 1. Descargar desde github el proyecto.
 
-        sudo git clone https://github.com/areahackerscivics/infoecoVLC_M3_Integracion_Telegram
+        sudo git clone https://github.com/areahackerscivics/Chatbot_M3_Infoeco
 
 2. Entramos en la carpeta descargada que contiene el proyecto.
 
-        cd infoecoVLC_M3_Integracion_Telegram
+        cd Chatbot_M3_Infoeco
 
 3. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
 

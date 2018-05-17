@@ -72,31 +72,35 @@ def query(mensaje,idUser, leng):
     res = res.json()
     #['result']['resolvedQuery'])
     intent = res['result']['metadata']['intentName']
-    if intent == 'Presupuesto':
+    if intent == 'Presupuesto': ## pregunta guardada para proxima iteracion
        #geo , date, presu = res['result']['parameters'].items()
        
        #return presupuesto_general(geo[1], date[1],leng)
-       return res['result']['speech']
+       return 0, respuestas_bot('error.Salario',leng)
     if intent == 'Welcome':
-       return respuesta_bot(res['result']['action'], leng)
+       return 1, respuesta_bot(res['result']['action'], leng)
 
-    if intent in ['Default Fallback Intent','Despedida','bot','comiat']:
-       return res['result']['speech']
+    if intent in ['Despedida','bot','comiat']:
+       return 1, res['result']['speech']
+
+    if intent in ['Default Fallback Intent']:
+
+       return 0 , respuesta_bot("preg.desconocida", leng) 
 
     if intent == 'salario':
        nombre,cargo = res['result']['parameters'].items()
        key = res['result']['action']
        #print(nombre,cargo)
        if nombre[1] !="":
-         return salarios(nombre[1],key, leng)
+         return 1, salarios(nombre[1],key, leng)
        elif cargo[1] !="":
          
-         return cargos(cargo[1],key,leng)
+         return 1, cargos(cargo[1],key,leng)
        else:
          if leng == 'Cast':
-           return res['result']['speech']
+           return 0, res['result']['speech']
          else:
-           return respuestas_bot('error.Salario',leng)
+           return 0, respuestas_bot('error.Salario',leng)
 
     if intent == 'Impuestos':
         year, barrio, impuesto = res['result']['parameters'].items()

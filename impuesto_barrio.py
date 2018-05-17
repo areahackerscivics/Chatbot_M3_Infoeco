@@ -93,13 +93,13 @@ def impuestos_barrio(barrio,impuesto,anio,key,leng):
   
     try:
       respuesta = list(dbBarrios.aggregate(pipeline))
-      return respuesta_bot(key,leng).format(barrio,addComa(format(respuesta[0]['valor'],"0.2f")),impuesto,anio)
+      return 1, respuesta_bot(key,leng).format(barrio,addComa(format(respuesta[0]['valor'],"0.2f")),impuesto,anio)
     except Exception as e:
       logging.exception("- Error conexión PagoBarrios: ")
-      return respuesta_bot('errorImpRes',leng)
+      return 0,respuesta_bot('errorImpRes',leng)
     
   else:
-    return respuesta_bot('resErrorano',leng).format(anio)
+    return 0, respuesta_bot('resErrorano',leng).format(anio)
 
 if __name__ =='__main__':
    print(impuestos_barrio('benimaclet','IBI','2016','res.Impuesto','Cast'))

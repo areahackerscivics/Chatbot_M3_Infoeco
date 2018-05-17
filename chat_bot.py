@@ -19,7 +19,11 @@ tecladoIdioma = InlineKeyboardMarkup(inline_keyboard=[
      InlineKeyboardButton(text='Castellano', callback_data='Cast')],#Dentro de la lista para que se vea en la misma línea
   ])
   
-
+teclado_respuesta_bot = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Sí', callback_data='si'),
+     InlineKeyboardButton(text='No', callback_data='no'),
+     InlineKeyboardButton(text='NS/NC', callback_data='ns/nc')],#Dentro de la lista para que se vea en la misma línea
+  ])
 
 def start(bot,update):
   ### le pasamos la id de telegram para registrar usuario nuevo.
@@ -43,14 +47,15 @@ def button(bot,update):
     ## this function allow the user change the language between spanish and valenciano 
     query = update.callback_query
 
-    resultado = True
-    if resultado == True:
+    if query.data in ['Val','Cast']:
         actualizarIdioma(query.message.chat.id,query.data)
-        bot.answerCallbackQuery(callback_query_id= query.id, text=texto.respuestas_bot('pulsarBotonIdioma',query.data))
-        bot.sendMessage(chat_id =query.message.chat_id, text=texto.respuestas_bot('respuestaCambioIdioma',query.data))
-    else:
-        bot.sendMessage(chat_id= query.message.chat_id, text=texto.respuestas_bot('respuestaCambioIdiomaError',query.data))
-
+        bot.answerCallbackQuery(callback_query_id= query.id, text=texto.respuesta_bot('pulsarBotonIdioma',query.data))
+        bot.sendMessage(chat_id =query.message.chat_id, text=texto.respuesta_bot('respuestaCambioIdioma',query.data))
+    if query.data in ['si','no','ns/nc']:
+        leng=get_idioma(query.message.chat.id)
+        insertar_feedback(query)
+        bot.answerCallbackQuery(callback_query_id= query.id, text=texto.respuesta_bot('feedback',leng))
+    
 def mensaje(bot,update):
    ## if the user send a message to the bot, the program call this function to answer the user question.
    ### query is a function from apiai librery this function manage all the answer.
@@ -58,9 +63,13 @@ def mensaje(bot,update):
       insertarNuevoUsuario(update.message.chat_id)
    else:
       actualizarUsuario(update.message.chat_id)
-   text =query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
-   get_idioma(update.message.chat_id)
+   good , text =query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
+   leng=get_idioma(update.message.chat_id)
    bot.sendMessage(chat_id=update.message.chat_id, text=text)
+   
+   if good:
+     update.message.reply_text(respuesta_bot('res.Correcta',leng), reply_markup=teclado_respuesta_bot)
+   
    insertarMensaje(update.message,text)
 
 def main():
