@@ -28,7 +28,7 @@ teclado_respuesta_bot = InlineKeyboardMarkup(inline_keyboard=[
 def start(bot,update):
   ### le pasamos la id de telegram para registrar usuario nuevo.
   ## if the user exists we update the last time access to actual time, if not we add the user to the DB
-  if not existe_Usuario(update.message.chat_id):
+  if existe_Usuario(update.message.chat_id):
     insertarNuevoUsuario(update.message.chat_id)
   else:
     actualizarUsuario(update.message.chat_id)
