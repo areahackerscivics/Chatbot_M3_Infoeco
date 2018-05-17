@@ -34,13 +34,13 @@ def start(bot,update):
     actualizarUsuario(update.message.chat_id)
   leng = get_idioma(update.message.chat_id)
 
-  bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuestas_bot('comandoStart',leng))
+  bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuesta_bot('comandoStart',leng))
   update.message.reply_text('Idioma:', reply_markup=tecladoIdioma)
   
 def idioma(bot,update):
   leng = get_idioma(update.message.chat_id)
 
-  bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuestas_bot('comandoIdioma',leng))
+  bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuesta_bot('comandoIdioma',leng))
   update.message.reply_text('Idioma:', reply_markup=tecladoIdioma)
 
 def button(bot,update):
