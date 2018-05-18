@@ -88,14 +88,15 @@ def query(mensaje,idUser, leng):
        return 0 , respuesta_bot("preg.desconocida", leng) 
 
     if intent == 'salario':
-       nombre,cargo = res['result']['parameters'].items()
+       cargo = res['result']['parameters']['cargo']
+       nombre = res['result']['parameters']['nombre']
        key = res['result']['action']
        #print(nombre,cargo)
-       if nombre[1] !="":
-         return 1, salarios(nombre[1],key, leng)
-       elif cargo[1] !="":
+       if nombre !="":
+         return 1, salarios(nombre,key, leng)
+       elif cargo !="":
          
-         return 1, cargos(cargo[1],key,leng)
+         return 1, cargos(cargo,key,leng)
        else:
          if leng == 'Cast':
            return 0, res['result']['speech']
@@ -103,9 +104,11 @@ def query(mensaje,idUser, leng):
            return 0, respuestas_bot('error.Salario',leng)
 
     if intent == 'Impuestos':
-        year, barrio, impuesto = res['result']['parameters'].items()
+        year = res['result']['parameters']['date-period']
+        barrio = res['result']['parameters']['barrios']
+        impuesto = res['result']['parameters']['Tax']
         key = res['result']['action']
-        return impuestos_barrio(barrio[1],impuesto[1],year[1],key,leng)
+        return impuestos_barrio(barrio,impuesto,year,key,leng)
         
   else:
      return respuesta_bot('error.connection',leng)

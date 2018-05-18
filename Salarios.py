@@ -28,7 +28,6 @@ def salarios(nombre,key,idioma):
 def cargos(cargo,key,idioma):
   #this function return the salary of high public office 
   try:
-    print(cargo,key)
     nomina=db.salarios.find({"cargo":cargo})
     return respuesta_bot(key,idioma)[1].format(cargo,addComa(str(nomina[0]['salario'])))
     

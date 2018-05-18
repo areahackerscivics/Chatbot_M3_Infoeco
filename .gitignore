@@ -1,7 +1,6 @@
 *.pyc
 variables.py
 prueba.py
-unitest.py
 #varios
 chat_bot.log
 descripcion_bot.txt

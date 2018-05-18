@@ -54,7 +54,13 @@ def button(bot,update):
     if query.data in ['si','no','ns/nc']:
         leng=get_idioma(query.message.chat.id)
         insertar_feedback(query)
-        bot.answerCallbackQuery(callback_query_id= query.id, text=texto.respuesta_bot('feedback',leng))
+        #bot.answerCallbackQuery(callback_query_id= query.id, text=texto.respuesta_bot('feedback',leng))
+        bot.edit_message_text(text=texto.respuesta_bot('feedback',leng),
+                          chat_id=query.message.chat_id,
+                           message_id=query.message.message_id)
+
+def ayuda(bot, update):
+   bot.sendMessage(chat_id = update.message.chat.id, text ='puedes preguntarme cualquier cosa sobre la situación financiera yo tratare de responder')
     
 def mensaje(bot,update):
    ## if the user send a message to the bot, the program call this function to answer the user question.
@@ -72,6 +78,12 @@ def mensaje(bot,update):
    
    insertarMensaje(update.message,text)
 
+
+def error(bot, update, error):
+    """Log Errors caused by Updates."""
+logger.warning('Update "%s" caused error "%s"', update, error)
+
+
 def main():
 
   updater = Updater(Token)
@@ -80,9 +92,11 @@ def main():
   updater.start_polling()
   updater.dispatcher.add_handler(CommandHandler('start',start))
   updater.dispatcher.add_handler(CommandHandler('inicio',start))
+  updater.dispatcher.add_handler(CommandHandler('ayuda',ayuda))
   updater.dispatcher.add_handler(CommandHandler('idioma',idioma))
   updater.dispatcher.add_handler(MessageHandler(Filters.text,mensaje))
   updater.dispatcher.add_handler(CallbackQueryHandler(button))
+  updater.dispatcher.add_error_handler(error)
   #updater.start_webhook(listen='0.0.0.0',
   #                    port=8443,
   #                    url_path=variables.Token_bot,
