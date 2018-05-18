@@ -62,7 +62,7 @@ def existe_Usuario(idUsuario):
         '_id': idUsuario
   }
   usuario = dbUsuarios.find_one(query)
-  if usuario == 'None':
+  if usuario == None:
     return False
   else:
     return True
