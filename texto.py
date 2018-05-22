@@ -37,7 +37,12 @@ dicVal = {
     "pulsarBotonIdioma": "Guardat en memòria.",
     "respuestaCambioIdioma": "A partir d'ara les comunicacions seran en valencià.",
     "respuestaCambioIdiomaError": "No s'ha pogut desar el canvi ara mateix, torna a intentar-ho més tard si us plau.",
-    "feedback":"Gràcies !!! Això ens ajuda a millorar."
+    "feedback":"Gràcies !!! Això ens ajuda a millorar.",
+## respuesta presupuesto.
+    "erroLugar":'Disculpeu, només estem funcionant a València.',
+    "errorAñoPrep":'Només tenim pressupost des del 2011.',
+    "res.presupuesto":"El pressupost de {}, en l'any {}, és: {}.",
+    "errorBusquedaPrep":"No Es troba el pressupost de l'any {}, en La nostra base de dades.", 
 }
 
 dicCast = {
@@ -66,9 +71,14 @@ dicCast = {
     "pulsarBotonIdioma": 'Guardado en memoria.',
     "respuestaCambioIdioma": 'A partir de ahora las comunicaciones serán en castellano.',
     "respuestaCambioIdiomaError": 'No se pudo guardar el cambio en estos momentos, vuelve a intentarlo más tarde por favor.',
-    "feedback":"Gracias!!! Esto nos ayuda a mejorar."
-
-    
+    "feedback":"Gracias!!! Esto nos ayuda a mejorar.",
+## respuesta presupuesto.
+    "erroLugar":'Disculpad, solo estamos funcionando en Valencia.',
+    "errorAñoPrep":'Solo tenemos presupuesto desde el 2011.',
+    "res.presupuesto":'El presupuesto de {}, en el año {}, es: {}.',
+    "errorBusquedaPrep":"No se encuentra el presupuesto del año {}, en nuestra base de datos.",     
+##ayuda
+    "ayuda":"Hola usuarix, soy infoecoVLC un chatbot creado con la intención de resolver preguntas acerca de la situación financiera del ayuntamiento de valencia. Sin embargo necesito que me entrenes para poder hacerlo bien, al principio me va a costar pero ya veras como mejoro con el tiempo. Entrenarme es muy fácil solo tienes que hacerme preguntas y si te apetece, puedes decirme si te he respondido de forma adecuada a tu pregunta Gracias."
 }
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------

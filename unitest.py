@@ -15,6 +15,7 @@ class TestDB(unittest.TestCase):
      #print(dbUsuario.remove({'_id':555}))
      return
   '''
+  
   def test_insertar(self): 
      client = MongoClient('localhost',27017)
      dbUsuario = client.usuarios.usuarios
@@ -42,6 +43,7 @@ class TestDB(unittest.TestCase):
      self.assertEqual(apiai.query("salario Sergi",555,'Cast'),(1,'Sergi Campillo Fernández gana 74.342,66€ de retribución anual bruta (sin antigüedad) por su cargo de Teniente de Alcalde.'))
      self.assertEqual(apiai.query("impuesto benimaclet",555,'Cast'),(1, 'El barrio Benimaclet pago en total 6.428.288,48 en impuestos el año 2016.'))
      self.assertEqual(apiai.query("ibi benimaclet 2018",555,'Cast'),(0, 'No tenemos los impuesto del 2018 año. de momento solo contamos con los impuesto del año 2016.'))
+     self.assertEqual(apiai.query("presupuesto Valencia 2012",555,'Cast'),(1, 'El presupuesto de Valencia, en el año 2012, es: 715.845.394,90.'))
      
   def test_addComa(self):
      self.assertEqual(DAO.addComa('78551.36'),'78.551,36')

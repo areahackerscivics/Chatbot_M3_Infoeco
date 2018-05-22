@@ -9,6 +9,12 @@ from DAO import*
 from telegram import  (ReplyKeyboardMarkup, ReplyKeyboardRemove, User, Bot,InlineKeyboardButton, InlineKeyboardMarkup)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, ConversationHandler, Filters,RegexHandler,CallbackQueryHandler)
 #filename="chat_bot.log"
+
+'''
+Hola usuarix, soy infoecoVLC un chatbot creado con la intención de resolver preguntas acerca de la situación financiera del ayuntamiento de valencia.
+Sin embargo necesito que me entrenes para poder hacerlo bien, al principio me va a costar pero ya veras como mejoro con el tiempo. Entrenarme es muy fácil solo tienes que hacerme preguntas y si te apetece, puedes decirme si te he respondido de forma adecuada a tu pregunta Gracias.
+'''
+
 logging.basicConfig(filename="chat_bot.log", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -81,7 +87,7 @@ def mensaje(bot,update):
 
 def error(bot, update, error):
     """Log Errors caused by Updates."""
-logger.warning('Update "%s" caused error "%s"', update, error)
+    logger.warning('Update "%s" caused error "%s"', update, error)
 
 
 def main():

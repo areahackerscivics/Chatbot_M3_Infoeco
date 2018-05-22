@@ -73,10 +73,12 @@ def query(mensaje,idUser, leng):
     #['result']['resolvedQuery'])
     intent = res['result']['metadata']['intentName']
     if intent == 'Presupuesto': ## pregunta guardada para proxima iteracion
-       #geo , date, presu = res['result']['parameters'].items()
+       geo = res['result']['parameters']['geo-city']
+       date= res['result']['parameters']['date-period']
        
-       #return presupuesto_general(geo[1], date[1],leng)
-       return 0, respuestas_bot('error.Salario',leng)
+       
+       return 1, presupuesto_general(geo, date,leng)
+       
     if intent == 'Welcome':
        return 1, respuesta_bot(res['result']['action'], leng)
 
