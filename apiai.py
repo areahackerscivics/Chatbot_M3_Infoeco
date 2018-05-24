@@ -8,11 +8,11 @@ import requests
 import json
 import logging
 
-from Salarios import *
+from respuestas.Salarios import *
 from texto import *
-from ayuntament import *
+from respuestas.presupuesto import *
 from variables import *
-from impuesto_barrio import *
+from respuestas.impuesto_barrio import *
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Variables

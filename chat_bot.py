@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import texto
-import ayuntament
 import logging 
 from apiai import *
 from variables import*
@@ -31,16 +30,20 @@ teclado_respuesta_bot = InlineKeyboardMarkup(inline_keyboard=[
      InlineKeyboardButton(text='NS/NC', callback_data='ns/nc')],#Dentro de la lista para que se vea en la misma línea
   ])
 
-def start(bot,update):
+def  start(bot,update):
   ### le pasamos la id de telegram para registrar usuario nuevo.
   ## if the user exists we update the last time access to actual time, if not we add the user to the DB
-  if existe_Usuario(update.message.chat_id):
+  if not existe_Usuario(update.message.chat_id):
     insertarNuevoUsuario(update.message.chat_id)
+    leng = get_idioma(update.message.chat_id)
+    bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuesta_bot('comandoStart',leng))
   else:
+    leng = get_idioma(update.message.chat_id)
+    bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuesta_bot('comandoIdioma',leng))
     actualizarUsuario(update.message.chat_id)
-  leng = get_idioma(update.message.chat_id)
+  
 
-  bot.sendMessage(chat_id = update.message.chat_id, text= texto.respuesta_bot('comandoStart',leng))
+  
   update.message.reply_text('Idioma:', reply_markup=tecladoIdioma)
   
 def idioma(bot,update):
