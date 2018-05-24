@@ -108,12 +108,14 @@ def main():
   updater.dispatcher.add_error_handler(error)
   #updater.start_webhook(listen='0.0.0.0',
   #                    port=8443,
-  #                    url_path=variables.Token_bot,
+  #                    url_path=Token_bot,
   #                    key='private.key',
   #                    cert='cert.pem',
-  #                    webhook_url='{}:8443/{}'.format(variables.url, variables.Token_bot))
+  #                    webhook_url='{}:8443/{}'.format(url, Token_bot))
 
   updater.idle()
 
 if __name__ == '__main__':
   main()
+
+
