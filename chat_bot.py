@@ -69,8 +69,8 @@ def button(bot,update):
                            message_id=query.message.message_id)
 
 def ayuda(bot, update):
-   leng=get_idioma(query.message.chat.id)
-   bot.sendMessage(chat_id = update.message.chat.id, text =respuesta_bot('ayudas',leng))
+   leng=get_idioma(update.message.chat.id)
+   bot.sendMessage(chat_id = update.message.chat.id, text =respuesta_bot('ayuda',leng))
     
 def mensaje(bot,update):
    ## if the user send a message to the bot, the program call this function to answer the user question.
