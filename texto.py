@@ -43,6 +43,8 @@ dicVal = {
     "errorAñoPrep":'Només tenim pressupost des del 2011.',
     "res.presupuesto":"El pressupost de {}, en l'any {}, és: {}.",
     "errorBusquedaPrep":"No Es troba el pressupost de l'any {}, en La nostra base de dades.", 
+## ayuda
+    "ayuda":"ajuda no disponible"
 }
 
 dicCast = {
@@ -78,8 +80,10 @@ dicCast = {
     "res.presupuesto":'El presupuesto de {}, en el año {}, es: {}.',
     "errorBusquedaPrep":"No se encuentra el presupuesto del año {}, en nuestra base de datos.",     
 ##ayuda
-    "ayuda":"Hola usuarix, soy infoecoVLC un chatbot creado con la intención de resolver preguntas acerca de la situación financiera del ayuntamiento de valencia. Sin embargo necesito que me entrenes para poder hacerlo bien, al principio me va a costar pero ya veras como mejoro con el tiempo. Entrenarme es muy fácil solo tienes que hacerme preguntas y si te apetece, puedes decirme si te he respondido de forma adecuada a tu pregunta Gracias."
+    "ayuda":"Hola usuarix, soy InfoecoVLC un chatbot que puede responder a preguntas sobre salarios de personas de altos cargos dentro de el ayuntamiento como Alcalde y/o concejales; presupuesto general del ayuntamiento desde el año 2011 y los diferentes impuestos cobrados a un barrio como por ejemplo la petxina. También me puedes hacer la pregunta que quieras puede que no te responda pero las tomare en cuenta en futuras actualizaciones."
 }
+
+
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Función

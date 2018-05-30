@@ -42,14 +42,25 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 
         sudo nano variables.py
 
-4. Creamos la imagen con nombre "mTelegram".
+5. Descargar desde github el proyecto.
+   
+        sudo git clone https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento
 
-        sudo docker build . -t mtelegram
+6. Seguir los pasos mostrados en la [guia](https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento.) para la creacion de una base de datos en Mongodb, importante tener Mongodb en el sistema operativo.
+  
+7. Del [modulo 2 Api.ia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC)
+        
+        cd git clone https://github.com/areahackerscivics/Apiai_M2_infoecoVLC
 
-5. Ejecutamos el contenedor en segundo plano
+8. Revisamos La [guia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
 
-        sudo docker run -d --name modulTelegram mtelegram
+9. Ejecutamos un screen para mantener la aplicación en ejecución.
+       
+        screen 
 
+10. Ejecutamos el script de python dentro del screen.
+        
+        python3 chat_bot.py
 
 
 ## Colaboración
