@@ -80,32 +80,40 @@ En el directorio **include/** se encuentran algunos archivos de cabecera de C (c
 Finalmente, en el directorio **lib/** se encuentra una copia de la instalación de Python así como un directorio llamado **site-packages/** en donde se almacenan los paquetes Python instalados en el entorno virtual.
 
 5. Instalamos las librerías de Python necesarias.
+    
+        pip install -r requirements.txt
 
-6. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
+6. Activamos el ambiente virtual.
+ 
+        source env/bin/activate
+        "si lo queremos desactivar"
+        (env)$ deactivate
+
+7. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
 
         sudo mv variables_ejemplo.py variables.py
 
-7. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
+8. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
 
         sudo nano variables.py
 
-8. Descargar desde github el proyecto.
+9. Descargar desde github el proyecto.
    
         sudo git clone https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento
 
-9. Seguir los pasos mostrados en la [guía](https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento.) para la creación de una base de datos en Mongodb (importante tener Mongodb en el sistema operativo).
+10. Seguir los pasos mostrados en la [guía](https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento.) para la creación de una base de datos en Mongodb (importante tener Mongodb en el sistema operativo).
   
-10. Del [modulo 2 Api.ia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC)
+11. Del [modulo 2 Api.ia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC)
         
         cd git clone https://github.com/areahackerscivics/Apiai_M2_infoecoVLC
 
-11. Revisamos La [guía](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
+12. Revisamos La [guía](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
 
-12. Ejecutamos un screen para mantener la aplicación en ejecución.
+13. Ejecutamos un screen para mantener la aplicación en ejecución.
        
         screen 
 
-13. Ejecutamos el script de Python dentro del screen.
+14. Ejecutamos el script de Python dentro del screen.
         
         python3 chat_bot.py
 
