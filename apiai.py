@@ -24,9 +24,7 @@ try:
 except Exception as e:
     logging.exception("- Error al cargar tokens de api.ai: ")
 
-#baseURL = "https://api.api.ai/v1/"
 baseURL = "https://api.dialogflow.com/v1/"
-#baseURL = "https://api.dialogflow.com/v1/query?v=20150910&query=hola&lang=es&sessionId=500737046&timezone=Europe/Madrid"
 #v = 20170605 # fecha en formato AAAAMMDD
 #v = 20170712 intent
 v = 20150910 #one click integration
@@ -66,8 +64,7 @@ def sendQuery(texto, chat_id, idioma):
 
 def query(mensaje,idUser, leng):
   res = sendQuery(mensaje,idUser, leng)
-  #print(res)
-  if res.status_code == 200:
+   if res.status_code == 200:
     #if we get a answer from Dialogflow, and get the intent to select the answer that we want
     res = res.json()
     #['result']['resolvedQuery'])
@@ -93,7 +90,6 @@ def query(mensaje,idUser, leng):
        cargo = res['result']['parameters']['cargo']
        nombre = res['result']['parameters']['nombre']
        key = res['result']['action']
-       #print(nombre,cargo)
        if nombre !="":
          return 1, salarios(nombre,key, leng)
        elif cargo !="":
@@ -117,11 +113,9 @@ def query(mensaje,idUser, leng):
      
 if __name__=='__main__':
   res = sendQuery('valencia',"500737046", 'espanol')
-  #print(res)
   if res.status_code == 200:
     
     res = res.json()
-    #['result']['resolvedQuery'])
     intent = res['result']['metadata']['intentName']
     if intent == 'inicio':
        geo , date, presu = res['result']['parameters'].items()

@@ -21,9 +21,31 @@ Las librerías actualizadas siempre estarán actualizadas en el documento [**req
     python-telegram-bot = 9.0.0
     requests = 2.18.4
 
+## Herramientas usadas para tener en funcionamiento el Bot
+- Api de Telegram.
+- MongoDB.
+- Instancia EC2 AWS.
+- Python.
+
+## Justificación
+
+Se usó la plataforma de Telegram, debido al gran número de usuario con lo que cuenta esta aplicación ademas de la facilidad con la que permite desarrollar bots a los usuarios de su plataforma con su API. 
+
+MongoDB, permite almacenar datos en forma de documentos de manera no estructurada de manera consistente.
+
+Se usó el lenguaje Python  de programación la cuál cuenta con una serie de librerías que facilitan el desarrollo de este proyecto.
+
+- python-telegram-bot esta librería provee una interfaz de Python a la API de bot telegram, esta librería también cuenta con característica que facilitan el desarrollo de bots.
+
+- pymongo librería de Python que permite realizar gran parte de las operaciones que se pueden hacer directamente desde la interfaz de mongodb.
+
+- requests, permite hacer solicitudes GET and POST a paginas web.
+
+- bs4, estandar en Python para realizar Scrapping en paginas web.
+
+El InfoecoVLC bot está corriendo en una instancia EC2, el cual es un servicio muy practico de AWS que ofrece poder de computo como servicio ademas teda la posibilidad de aumentar la capacidad de computo de la instancia dependiendo del la demanda que tenga tu aplicación.
 
 ### Instalación
-El modulo consta con todos los archivos necesarios para ser ejecutado en Docker y la guía de instalación contara como que se tiene instalado Docker. De no ser el caso podéis instalarlo siguiendo la [guía de instalación para Ubuntu](./instalacionDocker.md).
 
 **Pasos**
 1. Descargar desde github el proyecto.
@@ -34,31 +56,56 @@ El modulo consta con todos los archivos necesarios para ser ejecutado en Docker 
 
         cd Chatbot_M3_Infoeco
 
-3. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
+3. Instalamos virtaulenv.
+        
+        sudo apt-get install python-virtualenv virtualenv
+   o
+        sudo pip install virtualenv
+
+4. Creamos un entorno virtual con python3. 
+ 
+        virtualenv env --python=python3
+
+Este comando crea el directorio env con la siguiente estructura.
+
+        env/
+           bin/
+           include/
+           lib/
+              site-packages/
+
+En el directorio **bin/** se encuentran los ejecutables necesarios para interactuar con el entorno virtual. 
+En el directorio **include/** se encuentran algunos archivos de cabecera de C (cuya extensión es *.h) necesarios para compilar algunas librerías de Python.
+
+Finalmente, en el directorio **lib/** se encuentra una copia de la instalación de Python así como un directorio llamado **site-packages/** en donde se almacenan los paquetes Python instalados en el entorno virtual.
+
+5. Instalamos las librerías de Python necesarias.
+
+6. Cambiamos el  nombre de variables_ejemplo.py por **variables.py**.
 
         sudo mv variables_ejemplo.py variables.py
 
-4. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
+7. Sustituir las “XXX” de dentro de **variables.py** por las variables personales.
 
         sudo nano variables.py
 
-5. Descargar desde github el proyecto.
+8. Descargar desde github el proyecto.
    
         sudo git clone https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento
 
-6. Seguir los pasos mostrados en la [guia](https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento.) para la creacion de una base de datos en Mongodb, importante tener Mongodb en el sistema operativo.
+9. Seguir los pasos mostrados en la [guía](https://github.com/areahackerscivics/Chatbot_M1_Extraccion_y_Almacenamiento.) para la creación de una base de datos en Mongodb (importante tener Mongodb en el sistema operativo).
   
-7. Del [modulo 2 Api.ia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC)
+10. Del [modulo 2 Api.ia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC)
         
         cd git clone https://github.com/areahackerscivics/Apiai_M2_infoecoVLC
 
-8. Revisamos La [guia](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
+11. Revisamos La [guía](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
 
-9. Ejecutamos un screen para mantener la aplicación en ejecución.
+12. Ejecutamos un screen para mantener la aplicación en ejecución.
        
         screen 
 
-10. Ejecutamos el script de python dentro del screen.
+13. Ejecutamos el script de Python dentro del screen.
         
         python3 chat_bot.py
 
