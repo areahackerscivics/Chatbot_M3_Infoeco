@@ -4,7 +4,7 @@
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Librerias
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+import DAO
 
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Variables
@@ -24,7 +24,8 @@ dicVal = {
     "resErrorRespWH": "Ops! Les dades no estan disponibles en aquests moments. Torna a manar la teua pregunta en uns pocs minuts, per favor.",
     "resErrorano": "No tenim els {} de l'{} any. de moment només comptem amb els impost de l'any 2016.",
     "errorImpRes":"Disculpa no Podem donar-te una resposta.",
-    "resComplemento.Saludo": "Bon dia!",
+    "resComplemento.Saludo": ["Bon dia!","¡Hola!","¡Hey!"],
+    "resDespedida": ["¡Adios!","¡Fins ara humà!","Chao!"],
     "resinput.unknown": "Huy! Aquesta pregunta no la tenia contemplada.",
     "res.Salario": ["{} guanya {}€ de retribució anual bruta (sense antiguitat) pel seu càrrec de {}.",
                    "Un {} guanya {}€ de retribució anual bruta (sense antiguitat)."],
@@ -62,7 +63,8 @@ dicCast = {
     "resErrorRespWH": "¡Ops! Los datos no están disponibles en estos momentos. Vuelve a mandar tu pregunta en unos pocos minutos, por favor.",
     "resErrorano": "No tenemos los impuesto del {} año. de momento solo contamos con los impuesto del año 2016.",
     "errorImpRes":"Disculpa no podemos darte una respuesta.",
-    "resComplemento.Saludo": "¡Buenos días!",
+    "resComplemento.Saludo": ["¡Buenos días!","¡Hola!","¡Hey!"],
+    "resDespedida": ["¡Adios!","¡Hasta luego humano!","Chao!"],
     "resinput.unknown": "¡Huy! Esa pregunta no la tenía contemplada.",
     "res.Salario": ["{} gana {}€ de retribución anual bruta (sin antigüedad) por su cargo de {}.",
                     "Un {} gana {}€ de retribución anual bruta (sin antigüedad)."],
@@ -97,3 +99,4 @@ def respuesta_bot(key,idioma):
         text = dicCast[key]
 
     return text
+

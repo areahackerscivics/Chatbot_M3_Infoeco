@@ -6,7 +6,10 @@
 ##---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import pymongo
 import logging
+
 #from variables import *
+import time  
+import random
 from datetime import datetime # Para insertar la fecha actual
 import time #Librería con funcionalidades manipular y dar formato a fechas y horas
 
@@ -164,10 +167,10 @@ def addComa(num):
      num = num[:i] + '.' + num[i:]
   return num
 
-
+ 
 
 if __name__ == '__main__':
   print(addComa('552222225'))
-
+  
 
 

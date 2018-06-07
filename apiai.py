@@ -7,7 +7,7 @@
 import requests
 import json
 import logging
-
+from random import choice
 from respuestas.Salarios import *
 from texto import *
 from respuestas.presupuesto import *
@@ -45,7 +45,7 @@ def sendQuery(texto, chat_id, idioma):
     contexto = [{
         "name": "usuario",
         "parameters": { "idioma": idioma},
-        "lifespan": 1
+        "lifespan": 2
         }]
     payload = {
         "query": texto,
@@ -64,10 +64,11 @@ def sendQuery(texto, chat_id, idioma):
 
 def query(mensaje,idUser, leng):
   res = sendQuery(mensaje,idUser, leng)
-   if res.status_code == 200:
+  if res.status_code == 200:
     #if we get a answer from Dialogflow, and get the intent to select the answer that we want
     res = res.json()
     #['result']['resolvedQuery'])
+    
     intent = res['result']['metadata']['intentName']
     if intent == 'Presupuesto': ## pregunta guardada para proxima iteracion
        geo = res['result']['parameters']['geo-city']
@@ -77,10 +78,11 @@ def query(mensaje,idUser, leng):
        return 1, presupuesto_general(geo, date,leng)
        
     if intent == 'Welcome':
-       return 1, respuesta_bot(res['result']['action'], leng)
+       return 0, choice(respuesta_bot(res['result']['action'], leng))
+       
 
     if intent in ['Despedida','bot','comiat']:
-       return 1, res['result']['speech']
+       return 0, res['result']['speech']
 
     if intent in ['Default Fallback Intent']:
 
@@ -106,7 +108,14 @@ def query(mensaje,idUser, leng):
         barrio = res['result']['parameters']['barrios']
         impuesto = res['result']['parameters']['Tax']
         key = res['result']['action']
-        return impuestos_barrio(barrio,impuesto,year,key,leng)
+        return 1, impuestos_barrio(barrio,impuesto,year,key,leng)
+
+    if intent == "Impuesto-context":
+        year = res['result']['parameters']['date-period']
+        barrio = res['result']['parameters']['barrios']
+        impuesto = res['result']['parameters']['Tax']
+        key = res['result']['action']
+        return 1, impuestos_barrio(barrio,impuesto,year,key,leng)
         
   else:
      return respuesta_bot('error.connection',leng)

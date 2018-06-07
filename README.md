@@ -107,7 +107,7 @@ Finalmente, en el directorio **lib/** se encuentra una copia de la instalación 
         
         cd git clone https://github.com/areahackerscivics/Apiai_M2_infoecoVLC
 
-12. Revisamos La [guía](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) de este modulo.
+12. Seguir los pasos en la [guía](https://github.com/areahackerscivics/Apiai_M2_infoecoVLC) del modulo 2 para la configuración del PNL en Dialogflow.
 
 13. Ejecutamos un screen para mantener la aplicación en ejecución.
        
