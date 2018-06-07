@@ -108,17 +108,17 @@ def query(mensaje,idUser, leng):
         barrio = res['result']['parameters']['barrios']
         impuesto = res['result']['parameters']['Tax']
         key = res['result']['action']
-        return 1, impuestos_barrio(barrio,impuesto,year,key,leng)
+        return  impuestos_barrio(barrio,impuesto,year,key,leng)
 
     if intent == "Impuesto-context":
         year = res['result']['parameters']['date-period']
         barrio = res['result']['parameters']['barrios']
         impuesto = res['result']['parameters']['Tax']
         key = res['result']['action']
-        return 1, impuestos_barrio(barrio,impuesto,year,key,leng)
+        return  impuestos_barrio(barrio,impuesto,year,key,leng)
         
   else:
-     return respuesta_bot('error.connection',leng)
+     return 0, respuesta_bot('error.connection',leng)
      
 if __name__=='__main__':
   res = sendQuery('valencia',"500737046", 'espanol')

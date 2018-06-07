@@ -79,10 +79,10 @@ def mensaje(bot,update):
       insertarNuevoUsuario(update.message.chat_id)
    else:
       actualizarUsuario(update.message.chat_id)
-   good , text =query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
+   good , text = query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
    leng=get_idioma(update.message.chat_id)
    bot.sendMessage(chat_id=update.message.chat_id, text=text)
-   
+ 
    if good:
      update.message.reply_text(respuesta_bot('res.Correcta',leng), reply_markup=teclado_respuesta_bot)
    
@@ -99,7 +99,7 @@ def main():
   updater = Updater(Token)
 
   
-  updater.start_polling()
+  #updater.start_polling()
   updater.dispatcher.add_handler(CommandHandler('start',start))
   updater.dispatcher.add_handler(CommandHandler('inicio',start))
   updater.dispatcher.add_handler(CommandHandler('ayuda',ayuda))
@@ -107,12 +107,12 @@ def main():
   updater.dispatcher.add_handler(MessageHandler(Filters.text,mensaje))
   updater.dispatcher.add_handler(CallbackQueryHandler(button))
   updater.dispatcher.add_error_handler(error)
-  #updater.start_webhook(listen='0.0.0.0',
-  #                    port=8443,
-  #                    url_path=Token_bot,
-  #                    key='private.key',
-  #                    cert='cert.pem',
-  #                    webhook_url='{}:8443/{}'.format(url, Token_bot))
+  updater.start_webhook(listen='0.0.0.0',
+                      port=8443,
+                      url_path=Token,
+                      key='private.key',
+                      cert='cert.pem',
+                      webhook_url='{}:8443/{}'.format(url, Token))
 
   updater.idle()
 
