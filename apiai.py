@@ -10,6 +10,7 @@ import logging
 from random import choice
 from respuestas.Salarios import *
 from texto import *
+from respuestas.programa import program
 from respuestas.presupuesto import *
 from variables import *
 from respuestas.impuesto_barrio import *
@@ -116,6 +117,11 @@ def query(mensaje,idUser, leng):
         impuesto = res['result']['parameters']['Tax']
         key = res['result']['action']
         return  impuestos_barrio(barrio,impuesto,year,key,leng)
+    
+    if intent == "programas":
+        year = res['result']['parameters']['date-period']
+        geo = res['result']['parameters']['geo-city']
+        return program(year,geo)
         
   else:
      return 0, respuesta_bot('error.connection',leng)

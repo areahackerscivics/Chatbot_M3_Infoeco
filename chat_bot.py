@@ -5,7 +5,7 @@ import logging
 from apiai import *
 from variables import*
 from DAO import*
-from telegram import  (ReplyKeyboardMarkup, ReplyKeyboardRemove, User, Bot,InlineKeyboardButton, InlineKeyboardMarkup)
+from telegram import  (ReplyKeyboardMarkup, ReplyKeyboardRemove, User, Bot,InlineKeyboardButton, InlineKeyboardMarkup,InputMediaPhoto)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, ConversationHandler, Filters,RegexHandler,CallbackQueryHandler)
 #filename="chat_bot.log"
 
@@ -79,13 +79,20 @@ def mensaje(bot,update):
       insertarNuevoUsuario(update.message.chat_id)
    else:
       actualizarUsuario(update.message.chat_id)
+   #bot.send_photo(chat_id=update.message.chat_id, photo=open('programas_2011.png', 'rb'))
+   #bot.send_photo(update.message.chat_id,open("/home/rcancar/github/Chatbot_M1_Extraccion_y_Almacenamiento/programas_2011.png"))
    good , text = query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
    leng=get_idioma(update.message.chat_id)
    bot.sendMessage(chat_id=update.message.chat_id, text=text)
- 
-   if good:
-     update.message.reply_text(respuesta_bot('res.Correcta',leng), reply_markup=teclado_respuesta_bot)
    
+  
+   if good == 1 :
+       update.message.reply_text(respuesta_bot('res.Correcta',leng), reply_markup=teclado_respuesta_bot)
+   
+   if good == 2 :
+          bot.send_photo(chat_id=update.message.chat_id, photo=open(text, 'rb'))
+          update.message.reply_text(respuesta_bot('res.Correcta',leng), reply_markup=teclado_respuesta_bot)
+
    insertarMensaje(update.message,text)
 
 
@@ -99,7 +106,7 @@ def main():
   updater = Updater(Token)
 
   
-  #updater.start_polling()
+  updater.start_polling()
   updater.dispatcher.add_handler(CommandHandler('start',start))
   updater.dispatcher.add_handler(CommandHandler('inicio',start))
   updater.dispatcher.add_handler(CommandHandler('ayuda',ayuda))
@@ -107,12 +114,12 @@ def main():
   updater.dispatcher.add_handler(MessageHandler(Filters.text,mensaje))
   updater.dispatcher.add_handler(CallbackQueryHandler(button))
   updater.dispatcher.add_error_handler(error)
-  updater.start_webhook(listen='0.0.0.0',
-                      port=8443,
-                      url_path=Token,
-                      key='private.key',
-                      cert='cert.pem',
-                      webhook_url='{}:8443/{}'.format(url, Token))
+  #updater.start_webhook(listen='0.0.0.0',
+  #                    port=8443,
+  #                    url_path=Token,
+  #                    key='private.key',
+  #                    cert='cert.pem',
+  #                    webhook_url='{}:8443/{}'.format(url, Token))
 
   updater.idle()
 
