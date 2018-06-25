@@ -83,7 +83,8 @@ def mensaje(bot,update):
    #bot.send_photo(update.message.chat_id,open("/home/rcancar/github/Chatbot_M1_Extraccion_y_Almacenamiento/programas_2011.png"))
    good , text = query(update.message.text, update.message.chat_id,get_idioma(update.message.chat_id))
    leng=get_idioma(update.message.chat_id)
-   bot.sendMessage(chat_id=update.message.chat_id, text=text)
+   if good != 2 :
+     bot.sendMessage(chat_id=update.message.chat_id, text=text)
    
   
    if good == 1 :
